@@ -1,5 +1,21 @@
-
-
-
 #include "Character/AuraEnemy.h"
 
+AAuraEnemy::AAuraEnemy()
+{
+	GetMesh()->SetCustomDepthStencilValue(255);
+	Weapon->SetCustomDepthStencilValue(255);
+
+	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
+}
+
+void AAuraEnemy::HighlightActor()
+{
+	GetMesh()->SetRenderCustomDepth(true);
+	Weapon->SetRenderCustomDepth(true);
+}
+
+void AAuraEnemy::UnHighlightActor()
+{
+	GetMesh()->SetRenderCustomDepth(false);
+	Weapon->SetRenderCustomDepth(false);
+}
